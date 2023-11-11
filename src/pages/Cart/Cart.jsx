@@ -11,7 +11,7 @@ const Cart = () => {
     const [products, setProducts] = useState([]);
 
     useEffect( ()=>{
-        fetch(`https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/cart/${uID}`)
+        fetch(`${import.meta.env.VITE_BASE_URL}/cart/${uID}`)
         .then(res => res.json())
         .then(data => setProducts(data))
     },[])

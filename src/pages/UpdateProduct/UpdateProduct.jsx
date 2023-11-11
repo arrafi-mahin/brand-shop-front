@@ -1,11 +1,16 @@
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 
 const UpdateProduct = () => {
+    const [category, setCategory] = useState();
     const product = useLoaderData();
     const { _id, productImage, productName, brandName,  productType, productPrice, shortDes, rating } = product;
-
+    useEffect(()=>{
+        console.log('hello')
+        fetch(`${import.meta.env.VITE_BASE_URL}/category`).then(res => console.log(res));
+    },[])
     const handleUpdateProduct = event => {
         event.preventDefault();
 
@@ -24,7 +29,7 @@ const UpdateProduct = () => {
         console.log(updatedProduct);
 
         // send data to the server
-        fetch(`https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/product/${_id}`, {
+        fetch(`${import.meta.env.VITE_BASE_URL}/product/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

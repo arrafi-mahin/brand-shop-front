@@ -1,10 +1,15 @@
 
+import { useEffect, useState } from "react";
 import Category from "../Category/Category";
 import { useLoaderData } from "react-router-dom";
 
-const Categories = () => {
-
-    const categories = useLoaderData();
+const Categories = ({categories}) => {
+    const [data, setData] = useState([]);
+    useEffect(()=>{
+        setData(categories);
+        // console.log(categories);
+    },[])
+    
 
     return (
         <div className="py-24 bg-white">
@@ -12,7 +17,7 @@ const Categories = () => {
                 <h2 className="text-center text-blue-950 font-bold text-5xl mb-16">Our Categories</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                     {
-                        categories.map(category => <Category key={category._id} category={category}></Category>)
+                        data?.map(category => <Category key={category?._id} category={category}></Category>)
                     }
                 </div> 
             </div> 

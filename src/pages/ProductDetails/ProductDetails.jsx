@@ -14,7 +14,7 @@ const ProductDetails = () => {
         const cartData = {uID, productData}
         
         // send data to the server
-        fetch('https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/cart', {
+        fetch(`${import.meta.env.VITE_BASE_URL}/cart`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

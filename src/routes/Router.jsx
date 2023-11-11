@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/category')
+                loader: async () =>await fetch(`${import.meta.env.VITE_BASE_URL}/category`)
             },
             {
                 path: "/addProduct",
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
             {
                 path: "/category/:id",
                 element: <PrivateRoute><Products></Products></PrivateRoute>,
-                loader: ({params}) => fetch(`https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/category/${params.id}`)
+                loader: ({params}) => fetch(`${import.meta.env.VITE_BASE_URL}/category/${params.id}`)
             },
             {
                 path: "/addCategory",
@@ -40,12 +40,12 @@ const router = createBrowserRouter([
             {
                 path: "/product/:id",
                 element: <PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>,
-                loader: ({params}) => fetch(`https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/product/${params.id}`)
+                loader: ({params}) => fetch(`${import.meta.env.VITE_BASE_URL}/product/${params.id}`)
             },
             {
                 path: "updateProduct/:id",
                 element: <PrivateRoute><UpdateProduct></UpdateProduct></PrivateRoute>,
-                loader: ({params}) => fetch(`https://fashion-and-apparel-server-9j4ezqag8-hafizas-projects.vercel.app/product/${params.id}`)
+                loader: ({params}) => fetch(`${import.meta.env.VITE_BASE_URL}/product/${params.id}`)
             },
             {
                 path: "/cart",
