@@ -21,6 +21,7 @@ const AddProduct = () => {
 
         const newProduct = { productImage, productName, brandName, productType, productPrice, shortDes, rating }
         // send data to the server
+        console.log(newProduct);
         fetch(`${import.meta.env.VITE_BASE_URL}/product`, {
             method: 'POST',
             headers: {
@@ -68,7 +69,7 @@ const AddProduct = () => {
                                 <span className="label-text">Brand Name</span>
                             </label>
                             <select className="select select-bordered w-full bg-white" name="brandName">
-                                {category?.map(item => <option key={item._id} value={item?._id}>{item?.name}</option>)}
+                                {category?.map(item => <option key={item._id} value={item?.name}>{item?.name}</option>)}
                             </select>
                         </div>
 
