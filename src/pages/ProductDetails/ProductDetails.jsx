@@ -2,6 +2,7 @@ import {  useLoaderData } from "react-router-dom";
 import AdvSlider from "../AdvSlider/AdvSlider";
 import { AuthContext } from "../../providers/AuthProvider";
 import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const ProductDetails = () => {
     const productData = useLoaderData();
@@ -21,6 +22,14 @@ const ProductDetails = () => {
             },
             body: JSON.stringify(cartData)
         })
+        .then(res =>{
+            Swal.fire({
+                title: 'Success!',
+                text: 'Added To Cart',
+                icon: 'success',
+                confirmButtonText: 'OK'
+                })
+        } )
         .catch(error => {
             console.log(error);
         })
